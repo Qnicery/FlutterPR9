@@ -76,18 +76,6 @@ mixin _$HotelsStore on _HotelsStore, Store {
   }
 
   @override
-  void loadHotels(List<Hotel> list) {
-    final _$actionInfo = _$_HotelsStoreActionController.startAction(
-      name: '_HotelsStore.loadHotels',
-    );
-    try {
-      return super.loadHotels(list);
-    } finally {
-      _$_HotelsStoreActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 hotels: ${hotels},
