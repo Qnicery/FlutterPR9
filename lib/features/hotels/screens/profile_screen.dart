@@ -42,7 +42,6 @@ class ProfileScreen extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () async {
                       String? newName;
-
                       final result = await showDialog<String>(
                         context: context,
                         builder: (_) => AlertDialog(
@@ -50,8 +49,8 @@ class ProfileScreen extends StatelessWidget {
                           content: TextField(
                             autofocus: true,
                             decoration: const InputDecoration(hintText: 'Имя'),
-                            onChanged: (value) => newName = value, // сохраняем ввод
-                            onSubmitted: (value) => Navigator.of(context).pop(value), // Enter тоже работает
+                            onChanged: (value) => newName = value,
+                            onSubmitted: (value) => Navigator.of(context).pop(value),
                           ),
                           actions: [
                             TextButton(
@@ -59,7 +58,7 @@ class ProfileScreen extends StatelessWidget {
                               child: const Text('Отмена'),
                             ),
                             TextButton(
-                              onPressed: () => Navigator.of(context).pop(newName), // возвращаем введённое имя
+                              onPressed: () => Navigator.of(context).pop(newName),
                               child: const Text('OK'),
                             ),
                           ],
@@ -67,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
                       );
 
                       if (result != null && result.isNotEmpty) {
-                        store.setName(result); // передаем в Store
+                        store.setName(result);
                       }
                     },
                     style: ElevatedButton.styleFrom(
@@ -79,7 +78,6 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => context.push('/profile/settings'),

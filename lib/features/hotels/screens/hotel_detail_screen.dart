@@ -8,7 +8,9 @@ import '../stores/hotel_detail_store.dart';
 
 class HotelDetailScreen extends StatelessWidget {
   final Hotel hotel;
+
   const HotelDetailScreen({super.key, required this.hotel});
+
   @override
   Widget build(BuildContext context) {
     final store = HotelDetailStore();
@@ -59,6 +61,7 @@ class HotelDetailScreen extends StatelessWidget {
               const SizedBox(height: 16),
               Text('Цена: ${hotel.price} ₽ / ночь', style: const TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 16),
+
               TextFormField(
                 controller: controller,
                 keyboardType: TextInputType.number,
@@ -70,6 +73,7 @@ class HotelDetailScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
+
               GestureDetector(
                 onTap: () async {
                   final now = DateTime.now();
@@ -95,7 +99,9 @@ class HotelDetailScreen extends StatelessWidget {
                   ),
                 ),
               ),
+
               const SizedBox(height: 24),
+
               Center(
                 child: ElevatedButton(
                   onPressed: store.canConfirm
