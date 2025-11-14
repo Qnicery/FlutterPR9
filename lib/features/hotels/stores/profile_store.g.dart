@@ -33,12 +33,12 @@ mixin _$ProfileStore on _ProfileStore, Store {
   );
 
   @override
-  void toggleName() {
+  void setName(String name) {
     final _$actionInfo = _$_ProfileStoreActionController.startAction(
-      name: '_ProfileStore.toggleName',
+      name: '_ProfileStore.setName',
     );
     try {
-      return super.toggleName();
+      return super.setName(name);
     } finally {
       _$_ProfileStoreActionController.endAction(_$actionInfo);
     }

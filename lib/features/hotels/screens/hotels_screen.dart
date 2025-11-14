@@ -11,12 +11,9 @@ import '../widgets/hotel_list.dart';
 
 class HotelsScreen extends StatelessWidget {
   const HotelsScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     final hotelsStore = context.read<HotelsStore>();
-
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Отели'),
@@ -53,7 +50,6 @@ class HotelsScreen extends StatelessWidget {
                     '/hotels/detail',
                     extra: hotel,
                   );
-
                   if (booking != null) {
                     context.read<BookingStore>().addBooking(booking);
                   }

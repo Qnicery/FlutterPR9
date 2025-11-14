@@ -21,7 +21,6 @@ class HistoryScreen extends StatelessWidget {
           if (bookingStore.history.isEmpty) {
             return const Center(child: Text("Вы пока ничего не бронировали"));
           }
-
           return ListView.builder(
             itemCount: bookingStore.history.length,
             itemBuilder: (context, index) {

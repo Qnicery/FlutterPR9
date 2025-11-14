@@ -27,7 +27,6 @@ class ProfileScreen extends StatelessWidget {
           children: [
             const CircleAvatar(radius: 50),
             const SizedBox(height: 12),
-
             Observer(
               builder: (_) => Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -41,7 +40,36 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   const SizedBox(width: 10),
                   ElevatedButton(
-                    onPressed: store.toggleName,
+                    onPressed: () async {
+                      String? newName;
+
+                      final result = await showDialog<String>(
+                        context: context,
+                        builder: (_) => AlertDialog(
+                          title: const Text('Введите новое имя'),
+                          content: TextField(
+                            autofocus: true,
+                            decoration: const InputDecoration(hintText: 'Имя'),
+                            onChanged: (value) => newName = value, // сохраняем ввод
+                            onSubmitted: (value) => Navigator.of(context).pop(value), // Enter тоже работает
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(null),
+                              child: const Text('Отмена'),
+                            ),
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(newName), // возвращаем введённое имя
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        ),
+                      );
+
+                      if (result != null && result.isNotEmpty) {
+                        store.setName(result); // передаем в Store
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.all(8),
                       minimumSize: const Size(40, 40),
@@ -54,15 +82,12 @@ class ProfileScreen extends StatelessWidget {
 
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () => context.push(
-                '/profile/settings'
-              ),
+              onPressed: () => context.push('/profile/settings'),
               child: const Text('Настройки'),
             ),
           ],
         ),
       ),
-
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 2,
         onTap: (i) {

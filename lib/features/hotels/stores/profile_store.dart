@@ -9,7 +9,9 @@ abstract class _ProfileStore with Store {
   String userName = 'User';
 
   @action
-  void toggleName() {
-    userName = userName == 'User' ? 'Имя' : 'User';
+  void setName(String name) {
+    if (name.isNotEmpty) {
+      userName = name;
+    }
   }
 }
