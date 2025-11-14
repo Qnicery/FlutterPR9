@@ -12,7 +12,6 @@ import 'features/hotels/stores/hotels_store.dart';
 import 'features/hotels/stores/profile_store.dart';
 
 void main() {
-  //GetIt.I.registerLazySingleton<BookingService>(() => BookingService());
   runApp(
     MultiProvider(
       providers: [
