@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '/features/hotels/screens/hotels_screen.dart';
@@ -11,17 +12,14 @@ import 'features/hotels/stores/booking_store.dart';
 import 'features/hotels/stores/hotels_store.dart';
 import 'features/hotels/stores/profile_store.dart';
 
+
+final getIt = GetIt.instance;
+
 void main() {
-  runApp(
-    MultiProvider(
-      providers: [
-        Provider(create: (_) => BookingStore()),
-        Provider(create: (_) => HotelsStore()),
-        Provider(create: (_) => ProfileStore()),
-      ],
-      child: const MyApp(),
-    ),
-  );
+  getIt.registerLazySingleton(() => BookingStore());
+  getIt.registerLazySingleton(() => HotelsStore());
+  getIt.registerLazySingleton(() => ProfileStore());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

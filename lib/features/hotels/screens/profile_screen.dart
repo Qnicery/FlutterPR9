@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:provider/provider.dart';
+import '../../../main.dart';
 import '../stores/profile_store.dart';
 
 
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
-
-
   @override
   Widget build(BuildContext context) {
-    final store = context.watch<ProfileStore>();
+    final store = getIt<ProfileStore>();
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -64,7 +62,6 @@ class ProfileScreen extends StatelessWidget {
                           ],
                         ),
                       );
-
                       if (result != null && result.isNotEmpty) {
                         store.setName(result);
                       }

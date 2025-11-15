@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import '../../../main.dart';
 import '../stores/booking_store.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -9,7 +10,7 @@ class HistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bookingStore = context.watch<BookingStore>();
+    final bookingStore = getIt<BookingStore>();
 
     return Scaffold(
       appBar: AppBar(
